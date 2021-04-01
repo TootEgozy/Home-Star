@@ -1,5 +1,5 @@
 # just a placeholder for now.
-## here is a link to my netlify: 
+## here is a link to my netlify: https://priceless-goldwasser-ae1de4.netlify.app/
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
