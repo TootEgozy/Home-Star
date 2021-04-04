@@ -59,13 +59,35 @@ class App extends React.Component {
     await this.setState({users: mockupUsers});
   }
 
+  
+  // a passed method to get the user from a dropList, and set it to this state
+  // as current user.
+  logIn = (userId) => {
+    const selectedUser = this.state.users.find(user => {
+      return (user.id === userId);
+    });
+    this.setState({currentUser: selectedUser});
+  }
 
-  // a passed method to get the user from a dropList
-  logIn = () => {
-
+  addNewUser = (userId, userName, userAvatar) => {
+    const newUser = 
+    {
+      id: userId,
+      name: userName,
+      avatar: userAvatar,
+      tasks: [],
+      projects: []
+    }
+    const newUsers = [...this.state.users];
+    newUsers.push(newUser);
+    this.setState({currentUser: newUser, users: newUsers});
   }
 
   render () {
+    // console.log("current user: ");
+    // console.log(this.state.currentUser);
+    // console.log("users:");
+    // console.log(this.state.users);
     return (
       <Router>
         <div>
@@ -76,8 +98,9 @@ class App extends React.Component {
             </Route>
             <Route path='/login' exact component={Login}>
               <Login 
-              currentUser={this.state.currentUser}
-              users={this.state.users}              
+              logIn={this.logIn}
+              currentUser={this.state.currentUser? this.state.currentUser : "newUser"}
+              users={mockupUsers}              
               />
             </Route>
             <Route path='/calendar' exact component={CalendarContainer}>
@@ -87,7 +110,9 @@ class App extends React.Component {
               <Starboard/>
             </Route>
             <Route path='/newuser' exact component={NewUser}>
-              <NewUser/>
+              <NewUser 
+              addNewUser={this.addNewUser}
+              />
             </Route>
             <Route path='/logout' exact component={LogOut}>
               <LogOut/>

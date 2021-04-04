@@ -10,18 +10,13 @@ class Homepage extends Component {
     }
 
     componentDidMount = () => {
-        console.log("in homepage");
-        console.log(this.state.currentUser);
-        if(this.state.currentUser === null) {
-            <Redirect to="/login">
-            </Redirect>
-        }
     }
+
     render() {
         return (
             <div>
-                {this.state.currentUser===null? <Redirect to="/login"/> : ""}
-                <h1>HomePage</h1>   
+                <h1>HomePage</h1>
+                {this.state.currentUser? "" : <Redirect to="/login"/>}
             </div>
         )
     }

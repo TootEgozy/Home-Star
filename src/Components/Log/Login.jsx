@@ -8,6 +8,7 @@ class Login extends Component {
             currentUser:this.props.currentUser,
             users: this.props.users,
             createNewUser: false,
+            logInClicked: false
         }
     }
 
@@ -22,22 +23,29 @@ class Login extends Component {
     // and set the user as current user in app's state.
 
     // if the user choses to create a new user, direct into create new user page
-    componentDidMount = () => {
-        console.log("mounted");
-        console.log(this.state.users);
-        if(!this.state.currentUser===null) {
-            <Redirect to='/homepage'></Redirect>
-        }
-    }
-
-    componentDidUpdate=()=> {
-        // console.log(this.state);
-    }
-    
     setUser = async(e) => {
         await this.setState({currentUser: e.target.value});
-        console.log(this.state.currentUser);
     }
+
+    clickedLogIn = (e) => {
+        if(this.state.currentUser && this.state.currentUser !== "newUser") {
+            this.props.logIn(this.state.currentUser);      
+        }
+        this.setState({logInClicked: true});
+    }
+
+    renderPaths = () => {
+        if(this.state.currentUser && this.state.logInClicked) {
+            if (this.state.currentUser === "newUser") {
+                return (<Redirect to='/newuser'></Redirect>);
+            }
+            else {
+                return (<Redirect to='/'></Redirect>);
+            }
+        }
+        return (<></>);
+    }
+
 
     render() {
         return (
@@ -46,16 +54,18 @@ class Login extends Component {
                     <h1>Login</h1>
                     <div className="droplist-container">
                         <select onChange={e=> this.setUser(e)}>
+                            <option default value="newUser">Create New User</option>
                             {this.state.users.map(user => {
                                 return <option key={user.name} value={user.id}>{user.name}</option>
                             })}
                         </select>
                     </div>
-                    <Link to='newuser'>
-                        link
-                    </Link>
+                    <button 
+                    className="log-in-confirm-button"
+                    onClick={e=>this.clickedLogIn(e)}
+                    >Confirm</button>
                 </div>
-
+                {this.renderPaths()}
             </div>
         )
     }
