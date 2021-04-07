@@ -91,7 +91,7 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          <Navvbar/>
+          <Navvbar currentUser={this.state.currentUser}/>
           <Switch>
           <Route path='/' exact component={Homepage}>
               <Homepage currentUser={this.state.currentUser}/>
@@ -104,10 +104,16 @@ class App extends React.Component {
               />
             </Route>
             <Route path='/calendar' exact component={CalendarContainer}>
-              <CalendarContainer/>
+              <CalendarContainer
+              users={this.state.users}
+              currentUser={this.state.currentUser}
+              />
             </Route>
             <Route path='/starboard' exact component={Starboard}>
-              <Starboard/>
+              <Starboard
+              currentUser={this.state.currentUser}
+              users={this.state.users}
+              />
             </Route>
             <Route path='/newuser' exact component={NewUser}>
               <NewUser 
