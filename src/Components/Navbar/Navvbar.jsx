@@ -12,7 +12,7 @@ class Navvbar extends Component {
               <ul className="navbar-ul">
                   <li>
                     <div className="navbar-user">
-                      {this.state.currentUser? this.state.currentUser.name : ""}
+                      {this.state.currentUser? "Hello"+this.state.currentUser.name : ""}
                     </div>
                   </li>
                   <Link to='/'>
