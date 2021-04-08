@@ -3,6 +3,7 @@ import {Calendar, momentLocalizer} from 'react-big-calendar';
 import Moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
 import TaskInput from './TaskInput';
 
 const localizer = momentLocalizer(Moment);
@@ -37,9 +38,6 @@ class CalendarContainer extends Component {
         let matchingUserId;
 
         
-        
-
-
         //this.state.users.find(user=> {
         //     return user.tasks.find(task=> {
         //         return task.resources[0].id === newTask.resources[0].id)
@@ -121,6 +119,7 @@ class CalendarContainer extends Component {
                 <h1>Calendar</h1>
                 {this.state.tasks? this.MyCalendar() : <div>loading...</div>}
                 {this.state.showInputFiled? this.inputTask() : <></>}
+                {<Link to='/newtask'>Create new task</Link>}
                 {this.state.currentUser? "" : <Redirect to="/login"/>} 
             </div>
         )
