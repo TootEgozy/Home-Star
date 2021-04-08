@@ -9,6 +9,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import LogOut from './Components/Log/LogOut';
 import React from 'react';
 import usersMockupData from './mockupUsers';
+import NewTask from './Components/NewTask/NewTask';
 
 const mockupUsers = usersMockupData;
 
@@ -57,6 +58,8 @@ class App extends React.Component {
       }
     }
     await this.setState({users: mockupUsers});
+    console.log(this.state.users);
+
   }
 
   
@@ -81,6 +84,29 @@ class App extends React.Component {
     const newUsers = [...this.state.users];
     newUsers.push(newUser);
     this.setState({currentUser: newUser, users: newUsers});
+  }
+
+  addNewTask = (userId, task) => {
+   //create duplicate of states users array,
+   //splice out of it the old user, push in the user with the 
+   //new task.
+   //update state with the new users array.
+
+    const userIndex = this.state.users.findIndex(function(user){
+      return user.id===userId
+    });
+
+    const tempUsers = [...this.state.users];
+
+    const updatedUser = tempUsers[userIndex];
+
+    updatedUser.tasks.push(task);
+
+    tempUsers.splice(userIndex, 1);
+    tempUsers.push(updatedUser);
+
+    this.setState({users: tempUsers});
+
   }
 
   render () {
@@ -122,6 +148,13 @@ class App extends React.Component {
             </Route>
             <Route path='/logout' exact component={LogOut}>
               <LogOut/>
+            </Route>
+            <Route path='/newtask' exact component={NewTask}>
+              <NewTask
+              users={this.state.users}
+              addNewTask={this.addNewTask}
+              currentUser={this.state.currentUser}
+              />
             </Route>
           </Switch>
         </div>

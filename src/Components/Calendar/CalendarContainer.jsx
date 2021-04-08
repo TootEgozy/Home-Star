@@ -3,179 +3,7 @@ import {Calendar, momentLocalizer} from 'react-big-calendar';
 import Moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { Redirect } from 'react-router';
-import events from './mockupEvents';
-
-const mockUserData =  [
-    {
-      id:"a",
-      name: "Yonni",
-      avatar: "./user1.png",
-      tasks: [
-          {
-          title:"Swipe Living room",
-          start: Moment("07/05/2021 10:00PM", "DD/MM/YYYY h:mmA"),
-          end: Moment("07/05/2021 10:00PM", "DD/MM/YYYY h:mmA"),
-        //   resources:[{taskId: "a", userId: "a", assignerId: "b", isCompeleted: false}],
-        },
-          {
-          title:"Wash dishes",
-          start: Moment("08/05/2021 11:20PM", "DD/MM/YYYY h:mmA"),
-          end: Moment("08/05/2021 11:20PM", "DD/MM/YYYY h:mmA"),
-        //   resources:[{taskId: "b", userId: "a", assignerId: "c", isCompeleted: true}],
-        }
-      ],
-    },
-    {
-      id:"b",
-      name: "Noa",
-      avatar: "./user2.png",
-      tasks: [
-          {
-              "title": "Clean Fridge",
-              "start": Moment("02/05/2021 17:30PM", "DD/MM/YYYY h:mmA"),
-              "end": Moment("02/05/2021 17:30PM", "DD/MM/YYYY h:mmA"),
-            //   resources:[{taskId: "c", userId: "b", assignerId: "c", isCompeleted: true}],
-          },
-          {
-              "title": "Walk dog",
-              "start": Moment("04/05/2021 14:30PM", "DD/MM/YYYY h:mmA"),
-              "end": Moment("04/05/2021 14:30PM", "DD/MM/YYYY h:mmA"),
-            //   resources:[{taskId: "d", userId: "b", assignerId: "e", isCompeleted: true}],
-          }
-      ],
-    },
-    {
-      id:"c",
-      name: "Mary",
-      avatar: "./user3.png",
-      tasks: [
-        {
-          "title": "Hang laundry",
-          "start": Moment("01/05/2021 13:30PM", "DD/MM/YYYY h:mmA"),
-          "end": Moment("01/05/2021 13:30PM", "DD/MM/YYYY h:mmA"),
-        //   resources:[{taskId: "e", userId: "c", assignerId: "d", isCompeleted: false}],
-      }
-      ],
-    },
-    {
-      id:"d",
-      name: "Daniel",
-      avatar: "./user4.png",
-      tasks: [
-        {
-          "title": "Wash floor",
-          "start": Moment("11/04/2021 17:30PM", "DD/MM/YYYY h:mmA"),
-          "end": Moment("11/04/2021 17:30PM", "DD/MM/YYYY h:mmA"),
-        //   resources:[{taskId: "i", userId: "d", assignerId: "c", isCompeleted: true}],
-      },
-      {
-          "title": "Walk cat",
-          "start": Moment("03/04/2021 14:30PM", "DD/MM/YYYY h:mmA"),
-          "end": Moment("03/04/2021 14:30PM", "DD/MM/YYYY h:mmA"),
-        //   resources:[{taskId: "j", userId: "d", assignerId: "e", isCompeleted: true}],
-      },
-      {
-          "title": "Scrub stove",
-          "start": Moment("08/05/2021 10:30PM", "DD/MM/YYYY h:mmA"),
-          "end": Moment("08/05/2021 10:30PM", "DD/MM/YYYY h:mmA"),
-        //   resources:[{taskId: "k", userId: "d", assignerId: "a", isCompeleted: true}],
-      }
-      ],
-    },
-    {
-      id:"e",
-      name: "Roy",
-      avatar: "./user5.png",
-      tasks: [
-        {
-          "title": "Wash floor",
-          "start": Moment("02/04/2021 17:30PM", "DD/MM/YYYY h:mmA"),
-          "end": Moment("02/04/2021 17:30PM", "DD/MM/YYYY h:mmA"),
-        //   resources:[{taskId: "l", userId: "e", assignerId: "c", isCompeleted: true}],
-      },
-      {
-          "title": "Walk cat",
-          "start": Moment("03/04/2021 14:30PM", "DD/MM/YYYY h:mmA"),
-          "end": Moment("03/04/2021 14:30PM", "DD/MM/YYYY h:mmA"),
-        //   resources:[{taskId: "m", userId: "e", assignerId: "e", isCompeleted: true}],
-      },
-      {
-          "title": "Scrub stove",
-          "start": Moment("03/04/2021 10:30PM", "DD/MM/YYYY h:mmA"),
-          "end": Moment("03/04/2021 10:30PM", "DD/MM/YYYY h:mmA"),
-        //   resources:[{taskId: "n", userId: "e", assignerId: "a", isCompeleted: true}],
-      }
-      ],
-    },
-  ];
-
-//let tasksArr = [];
-
-const stamEvents = [
-    {
-      'title': 'Test Event A',
-      'allDay': true,
-      'start': Moment("12/04/2021 14:30PM", "DD/MM/YYYY h:mmA"),
-      'end': Moment("12/04/2021 14:30PM", "DD/MM/YYYY h:mmA")
-    },
-    {
-      'title': 'Test Event B',
-      'start': Moment("11/04/2021 14:30PM", "DD/MM/YYYY h:mmA"),
-      'end': Moment("11/04/2021 14:30PM", "DD/MM/YYYY h:mmA")
-    }];
-
-
-const stamEvents2 = [
-    {
-        title:"Swipe Living room",
-        start: Moment("07/05/2021 10:00PM", "DD/MM/YYYY h:mmA"),
-        end: Moment("07/05/2021 10:00PM", "DD/MM/YYYY h:mmA"),
-      //   resources:[{taskId: "a", userId: "a", assignerId: "b", isCompeleted: false}],
-      },
-        {
-        title:"Wash dishes",
-        start: Moment("08/05/2021 11:20PM", "DD/MM/YYYY h:mmA"),
-        end: Moment("08/05/2021 11:20PM", "DD/MM/YYYY h:mmA"),
-      //   resources:[{taskId: "b", userId: "a", assignerId: "c", isCompeleted: true}],
-      },
-      {
-        "title": "Clean Fridge",
-        "start": Moment("02/05/2021 17:30PM", "DD/MM/YYYY h:mmA"),
-        "end": Moment("02/05/2021 17:30PM", "DD/MM/YYYY h:mmA"),
-      //   resources:[{taskId: "c", userId: "b", assignerId: "c", isCompeleted: true}],
-    },
-    {
-        "title": "Walk dog",
-        "start": Moment("04/05/2021 14:30PM", "DD/MM/YYYY h:mmA"),
-        "end": Moment("04/05/2021 14:30PM", "DD/MM/YYYY h:mmA"),
-      //   resources:[{taskId: "d", userId: "b", assignerId: "e", isCompeleted: true}],
-    },
-    {
-        "title": "Hang laundry",
-        "start": Moment("01/05/2021 13:30PM", "DD/MM/YYYY h:mmA"),
-        "end": Moment("01/05/2021 13:30PM", "DD/MM/YYYY h:mmA"),
-      //   resources:[{taskId: "e", userId: "c", assignerId: "d", isCompeleted: false}],
-    },
-    {
-        "title": "Wash floor",
-        "start": Moment("11/04/2021 17:30PM", "DD/MM/YYYY h:mmA"),
-        "end": Moment("11/04/2021 17:30PM", "DD/MM/YYYY h:mmA"),
-      //   resources:[{taskId: "i", userId: "d", assignerId: "c", isCompeleted: true}],
-    },
-    {
-        "title": "Walk cat",
-        "start": Moment("03/04/2021 14:30PM", "DD/MM/YYYY h:mmA"),
-        "end": Moment("03/04/2021 14:30PM", "DD/MM/YYYY h:mmA"),
-      //   resources:[{taskId: "j", userId: "d", assignerId: "e", isCompeleted: true}],
-    },
-    {
-        "title": "Scrub stove",
-        "start": Moment("10/04/2021 10:30PM", "DD/MM/YYYY h:mmA"),
-        "end": Moment("10/04/2021 10:30PM", "DD/MM/YYYY h:mmA"),
-      //   resources:[{taskId: "k", userId: "d", assignerId: "a", isCompeleted: true}],
-    }
-    
-];
+import TaskInput from './TaskInput';
 
 const localizer = momentLocalizer(Moment);
 
@@ -188,17 +16,37 @@ class CalendarContainer extends Component {
             tasks: [],
             currentTask: {},
             showInputFiled: false,
-            saveChanges: false
         } 
     }
 
     componentDidMount = async() => {
         await this.setTasksList();
-        // console.log(this.state.tasks);
-        // console.log(events);
-        // console.log(events[0].start);
-        // await this.setState({tasks: events});
 
+    }
+
+    cancelTaskInput = () => {
+        this.setState({
+            currentTask: {},
+            showInputFiled: false
+        });
+    }
+
+    saveTaskInputAndSendUp=(newTask, newTaskId)=>{
+        console.log(newTask);
+        let matchingTaskIndex;
+        let matchingUserId;
+
+        
+        
+
+
+        //this.state.users.find(user=> {
+        //     return user.tasks.find(task=> {
+        //         return task.resources[0].id === newTask.resources[0].id)
+        //     });
+        // })
+        // console.log(newTask);
+        // console.log(matchingTask);
     }
     
     // data-massaging: getting tasks, converting task's 
@@ -216,44 +64,54 @@ class CalendarContainer extends Component {
                     newTask.title = task.title;
                     newTask.resources = task.resources;
 
+                    if(newTask.resources[0].isCompeleted) {
+                        newTask.title = task.title.concat("-Done!");
+                    }
+
                     tasksArr.push(newTask);
                 })
             })
-            console.log(tasksArr);
+            //console.log(tasksArr);
             this.setState({tasks: tasksArr});
         }
-
-
-        //for(let i=0; i < mockUserData.length; i++) {
-        //    tasksArr = tasksArr.concat(mockUserData[i].tasks);
-        //}
-
-        
+ 
     }
+
+    clickedOnTask=(e)=> {
+        // console.log(e.resources[0])
+        console.log(this.state.currentUser);
+        this.setState({
+            currentTask:e,
+            showInputFiled: true
+        })
+    }
+   
 
     MyCalendar = () => {
         return (
             <div className="calendar-container-div">
                 <Calendar
+                    selectable={true}
                     localizer={localizer}
                     events={this.state.tasks}
-                    //events={stamEvents2}
-                    //events={tasksArr}
                     startAccessor="start"
                     endAccessor="end"
-                    defaultView="week"
+                    defaultView="month"
                     style={{height: 500}}
-                    //onSelectEvent={event => console.log(event.resource)}
-                    //onSelectSlot={slot=> console.log(slot.startAccessor)}
+                    onSelectEvent={e=> this.clickedOnTask(e)}
                 />
             </div>
         )
     }
     
     inputTask = () => {
+
         return (
-        <this.inputTask
+        <TaskInput
+        users={this.state.users}
         currentTask={this.state.currentTask}
+        currentUser={this.state.currentUser}
+        cancelCallback={this.cancelTaskInput}
         />)
     }
 
